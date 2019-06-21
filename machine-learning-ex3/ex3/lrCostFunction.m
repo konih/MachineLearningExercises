@@ -16,7 +16,7 @@ htheta = arrayfun(@sigmoid,X*theta);
 J = sum(-y.*log(htheta)+(y-1).*log(1-htheta))/m + (lambda/(2*m)) * sum(temp.^2);
 
 grad = (X'*(htheta-y))/m;
-grad = grad + (lambda/m)*temp;
+grad = grad + (lambda/m)*temp; %regularized gradient
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta.
 %               You should set J to the cost.
