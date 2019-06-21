@@ -22,7 +22,7 @@ hthetaMinusY = X*theta - y;
 
 J = sum((hthetaMinusY).^2)/(2*m) + (lambda/(2*m)) * sum(temp.^2);
 
-grad = (X'*hthetaMinusY)/m + lambda/m*temp
+grad = (X'*hthetaMinusY)/m + lambda/m*temp;
 % =========================================================================
 
 grad = grad(:);
