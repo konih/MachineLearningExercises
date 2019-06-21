@@ -20,7 +20,6 @@ m = size(X, 1);
 % You need to return these values correctly
 error_train = zeros(m, 1);
 error_val   = zeros(m, 1);
-
 % ====================== YOUR CODE HERE ======================
 % Instructions: Fill in this function to return training errors in 
 %               error_train and the cross validation errors in error_val. 
@@ -52,13 +51,12 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-
-
-
-
-
-
-
+for (i = 1:m)
+  theta = trainLinearReg(X(1:i,:),y(1:i,:),lambda);
+  
+  error_train(i) = sum((X(1:i,:)*theta - y(1:i,:)).^2)/(2*i);
+  error_val(i) =  sum((Xval*theta - yval).^2)/(2*m);
+endfor
 % -------------------------------------------------------------
 
 % =========================================================================
