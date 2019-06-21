@@ -7,7 +7,8 @@ function [J, grad] = linearRegCostFunction(X, y, theta, lambda)
 
 % Initialize some useful values
 m = length(y); % number of training examples
-
+temp = theta;
+temp(1) = 0; %not regularizing the bias term
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost and gradient of regularized linear 
@@ -19,9 +20,9 @@ m = length(y); % number of training examples
 
 hthetaMinusY = X*theta - y;
 
-J = sum((hthetaMinusY).^2)/(2*m) + (lambda/(2*m)) * sum(theta(2:end,:).^2);
+J = sum((hthetaMinusY).^2)/(2*m) + (lambda/(2*m)) * sum(temp.^2);
 
-grad = X'*hthetaMinusY/m + lambda/(2*m)*theta
+grad = (X'*hthetaMinusY)/m + lambda/m*temp
 % =========================================================================
 
 grad = grad(:);
